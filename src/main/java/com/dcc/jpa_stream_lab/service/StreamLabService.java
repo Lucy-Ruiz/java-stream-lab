@@ -77,16 +77,17 @@ public class StreamLabService {
         // You may need to use the helper classes imported above!
 
         //create date object with specific date so we can compare
-    	
-        return null;
+    	Date registered_before_2016 = new GregorianCalendar(2016, Calendar.JANUARY, 1).getTime();
+        return users.findAll().stream().filter(p -> registered_before_2016.compareTo(p.getRegistrationDate()) > 0).toList();
     }
 
     public List<User> RProblemFive()
     {
         // Write a query that gets all of the users who registered AFTER 2016 and BEFORE 2018
         // Return the list
-
-        return null;
+        Date registered_after_2016 = new GregorianCalendar(2016, Calendar.DECEMBER, 31).getTime();
+        Date registered_before_2018 = new GregorianCalendar(2018, Calendar.JANUARY, 1).getTime();
+        return users.findAll().stream().filter(p -> registered_after_2016.compareTo(p.getRegistrationDate()) < 0 && registered_before_2018.compareTo(p.getRegistrationDate()) > 0).toList();
     }
 
     // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
